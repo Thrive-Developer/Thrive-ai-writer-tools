@@ -1,0 +1,21 @@
+# Ignore environment files
+.env
+
+# Ignore logs
+app/logs/*
+
+# Ignore compiled Python files
+app/__pycache__/*
+app/middleware/__pycache__/*
+app/models/__pycache__/*
+app/routes/__pycache__/*
+app/services/__pycache__/*
+
+# Ignore model files (example)
+app/cache/models--sentence-transformers--all-mpnet-base-v2/
+
+
+# Ignore large files
+*.safetensors
+*.pt
+*.bin

@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "e6c85336-386a-414c-a633-1c5c61b6cfb6",
+		"name": "Chatbot-Keloola",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20136919"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfaWQiOiI3OTUwMmEzNy1hNDYzLTNmYmYtOGUyZC1iYTI3ZmFiMTk1NjYiLCJuYW1lIjoiTXIuIENvbm5vciBXYWVsY2hpIn0sImNvbXBhbnkiOnsiY29tcGFueV9pZCI6MiwibmFtZSI6IlBUIEdlbWEgVGVrbm9sb2dpIENhaGF5YSBHZW1pbGFuZyJ9LCJwZXJtaXNzaW9uIjp7InBlcm1pc3Npb25faWQiOjI5LCJuYW1lIjoibWFuYWdlIHRheCJ9LCJpYXQiOjE3Mjc0MDU1ODB9.VzKCkNLA16c7HZyH89FALO6Osejxli3raroWEQit7bRotz3jnYHn88HPE5T2phcebmht1oY7-nEFDIBgCdcoTlNl379igwHJlM3newWYZ_LcGBs5KiMG1K3kYK2UoRJjt5NTKelfdF9zqjqNWkvsAXUXY1XDJPhbuM6Em9XwZ0FeXGtYTLlUzUF1wc5rsnlVqMi7hqIjLclCde9QRCNDuXOycGfwloOIcUe-ctuzU9w4tVaqI8J8N4pfuODXyFPGy3OWCLbepp5ffL_Y6g756145IyeAYytTHYAwRXIbSFnFs8lxfteRsi_hys6Je9ySYi4Wtss2w6MZHwrSuYTHKA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"inputs\": \"How do I return an item?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_SERVER}}keloola-bot",
+					"host": [
+						"{{URL_SERVER}}keloola-bot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Keloola-chat",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1efa0d69-52b8-4ec0-af09-486c6fea8822"
+						},
+						{
+							"key": "query",
+							"value": "What is the maximum duration of the probation period?",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_CHATBOT}}/api/chatbot/keloola-chat",
+					"host": [
+						"{{URL_CHATBOT}}"
+					],
+					"path": [
+						"api",
+						"chatbot",
+						"keloola-chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Keloola-chat Copy",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1efa0b95-5c85-4140-8fa9-5ea6326989d6"
+						},
+						{
+							"key": "query",
+							"value": "What is the maximum duration of the probation period?",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL_CHATBOT}}/api/chatbot/keloola-chat",
+					"host": [
+						"{{URL_CHATBOT}}"
+					],
+					"path": [
+						"api",
+						"chatbot",
+						"keloola-chat"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
