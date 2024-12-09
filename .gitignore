@@ -11,6 +11,7 @@ app/models/__pycache__/*
 app/routes/__pycache__/*
 app/services/__pycache__/*
 
+
 # Ignore model files (example)
 app/cache/models--sentence-transformers--all-mpnet-base-v2/
 

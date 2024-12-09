@@ -18,7 +18,6 @@ token_service = TokenService()
 class RouteLogic:
     def __init__(self):
         logger.info("Initializing RouteLogic...")
-        self.model_emosi_detect = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base")
         self.company_id = None
         self.model_name_translate = "facebook/m2m100_418M"  # Model multibahasa
         self.tokenizer = M2M100Tokenizer.from_pretrained(self.model_name_translate)
@@ -83,18 +82,6 @@ class RouteLogic:
             logger.error(f"Error detecting language: {e}")
             return "en"  # Default ke bahasa Inggris jika gagal
     
-    def get_emotion(self, text):
-        """Mendeteksi emosi dari teks menggunakan model deteksi emosi dan mengembalikan emosi serta probabilitasnya."""
-        # Menjalankan model untuk mendeteksi emosi
-        emotion_result = self.model_emosi_detect(text)
-        
-        # Memeriksa emosi dan probabilitasnya
-        for emotion in emotion_result:
-            if emotion['label'] == 'anger' and emotion['score'] >= 0.61:
-                return 'anger', emotion['score']
-        
-        # Jika tidak ada emosi anger yang terdeteksi atau skor di bawah 0.61, kembalikan None
-        return None, 0
 
     def is_english_question(self, text):
         """Menentukan apakah teks input adalah pertanyaan dalam Bahasa Inggris."""
@@ -162,6 +149,14 @@ class RouteLogic:
                 formatted_response = gemini_response.replace('**', '<li>').replace('### ', '<h5>').replace('\n', '<br>')
 
                 # Append article with image
+                # html_responses.append(f"""
+                #     <div style='margin-top: 3em;'>
+                #         <h5>{short_keyword}</h5>
+                #         <h4>{meta_title}</h4>
+                #         <div>{formatted_response}</div>
+                #     </div>
+                # """)
+
                 html_responses.append(f"""
                     <div style='margin-top: 3em;'>
                         <h5>{short_keyword}</h5>
@@ -170,6 +165,7 @@ class RouteLogic:
                         <div>{formatted_response}</div>
                     </div>
                 """)
+
 
             # Build final HTML response
             final_html_response = f"""
